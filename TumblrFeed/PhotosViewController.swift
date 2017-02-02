@@ -35,16 +35,13 @@ class PhotosViewController: UIViewController {
                         // Recall there are two fields in the response dictionary, 'meta' and 'response'.
                         // This is how we get the 'response' field
                         let responseFieldDictionary = responseDictionary["response"] as! NSDictionary
-                        
+                        self.posts = responseFieldDictionary["posts"] as! [NSDictionary]
                         // This is where you will store the returned array of posts in your posts property
                         // self.feeds = responseFieldDictionary["posts"] as! [NSDictionary]
                     }
                 }
         });
         task.resume()
-        
-        self.posts = responseFieldDictionary["posts"] as! [NSDictionary]
-        
         
         // Do any additional setup after loading the view.
     }
