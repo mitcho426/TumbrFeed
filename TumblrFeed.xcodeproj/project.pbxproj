@@ -13,6 +13,7 @@
 		1D4036FB1E42D4850035468C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D4036F91E42D4850035468C /* LaunchScreen.storyboard */; };
 		1DF2C8851E42D63B00AC7012 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2C8841E42D63B00AC7012 /* PhotosViewController.swift */; };
 		1DF2C8871E42DE5C00AC7012 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2C8861E42DE5C00AC7012 /* PostCell.swift */; };
+		1DF2C8891E42E2C000AC7012 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF2C8881E42E2C000AC7012 /* DetailViewController.swift */; };
 		D0255E8E487889B44AF604DB /* Pods_TumblrFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712B8A20F7329B1BB92AD867 /* Pods_TumblrFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		1D4036FC1E42D4850035468C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF2C8841E42D63B00AC7012 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		1DF2C8861E42DE5C00AC7012 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		1DF2C8881E42E2C000AC7012 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		712B8A20F7329B1BB92AD867 /* Pods_TumblrFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TumblrFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3DF5E8F34051D0DFD3F52AD /* Pods-TumblrFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TumblrFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-TumblrFeed/Pods-TumblrFeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				1D4036F91E42D4850035468C /* LaunchScreen.storyboard */,
 				1D4036FC1E42D4850035468C /* Info.plist */,
 				1DF2C8841E42D63B00AC7012 /* PhotosViewController.swift */,
+				1DF2C8881E42E2C000AC7012 /* DetailViewController.swift */,
 			);
 			path = TumblrFeed;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				1D4036F11E42D4840035468C /* AppDelegate.swift in Sources */,
 				1DF2C8851E42D63B00AC7012 /* PhotosViewController.swift in Sources */,
 				1DF2C8871E42DE5C00AC7012 /* PostCell.swift in Sources */,
+				1DF2C8891E42E2C000AC7012 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

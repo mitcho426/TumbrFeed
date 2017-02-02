@@ -67,7 +67,25 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "YourCustomCell") as! PostCell
+        
+        // Configure YourCustomCell using the outlets that you've defined.
+        
+        return cell
+    }
     
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // Get the index path from the cell that was tapped
+        let indexPath = tableView.indexPathForSelectedRow
+        // Get the Row of the Index Path and set as index
+        let index = indexPath?.row
+        // Get in touch with the DetailViewController
+        let detailViewController = segue.destination as! DetailViewController
+        // Pass on the data to the Detail ViewController by setting it's indexPathRow value
+        detailViewController.index = index
+    }
     
 
     /*
