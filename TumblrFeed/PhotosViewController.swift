@@ -14,7 +14,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
     //Initialize posts as an empty array so it will not be nil
     var posts: [NSDictionary] = []
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,11 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         //        let cell = UITableViewCell()
         //        cell.textLabel?.text = "This is row \(indexPath.row)"
         
+//        
+//       cell.textLabel?.text = "This is row \(indexPath.row)"
+//
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+        
         let post = self.posts[indexPath.row]
         
         // Configure YourCustomCell using the outlets that you've defined.
@@ -77,7 +81,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let imageUrl = NSURL(string: imageUrlString!)
         cell.imgView.setImageWith(imageUrl as! URL)
-        
+//
         return cell
     }
     
