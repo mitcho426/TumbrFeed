@@ -10,6 +10,9 @@ import UIKit
 
 class PhotosDetailViewController: UIViewController {
 
+    @IBOutlet weak var posterView: UIImageView!
+    var URL: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
