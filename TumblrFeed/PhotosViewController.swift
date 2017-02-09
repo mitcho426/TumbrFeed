@@ -9,10 +9,11 @@
 import UIKit
 import AFNetworking
 
-class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     //Initialize posts as an empty array so it will not be nil
     var posts: [NSDictionary] = []
+    var isMoreDataLoading = false
     let refreshControl = UIRefreshControl()
     
     @IBOutlet var tableView: UITableView!
@@ -29,7 +30,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.rowHeight = 240;
         
         self.networkRequest()
-    
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,7 +43,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
         
         let post = self.posts[indexPath.row]
@@ -56,17 +57,17 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         let imageUrl = NSURL(string: imageUrlString!)
         cell.imgView.setImageWith(imageUrl as! URL)
         cell.selectionStyle = .none
-//
+        //
         return cell
     }
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-       
+        
         var indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
         // Get URL
         let post = self.posts[(indexPath?.row)!]
@@ -81,7 +82,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         let destinationViewController = segue.destination as! PhotosDetailViewController
         
         destinationViewController.imageURL = imageUrl as? URL
-     }
+    }
     
     func networkRequest() {
         // Do any additional setup after loading the view.
@@ -129,6 +130,41 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
             refreshControl.endRefreshing()
         }
         task.resume()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if(!isMoreDataLoading) {
+            
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThresHold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            if(scrollView.contentOffset.y > scrollOffsetThresHold && tableView.isDragging) {
+                isMoreDataLoading = true
+                loadMoreData()
+            }
+            
+        }
+    }
+    
+    func loadMoreData() {
+        
+        let url = URL(string:"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")
+        let request = URLRequest(url: url!)
+        
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate:nil,
+            delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            self.isMoreDataLoading = false
+            self.tableView.reloadData()
+        });
+        task.resume()
+        
     }
     
     
