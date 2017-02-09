@@ -11,11 +11,12 @@ import UIKit
 class PhotosDetailViewController: UIViewController {
 
     @IBOutlet weak var posterView: UIImageView!
-    var URL: String!
+    var imageURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.posterView.setImageWith(imageURL!)
         // Do any additional setup after loading the view.
     }
 

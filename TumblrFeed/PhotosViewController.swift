@@ -112,7 +112,6 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         var indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
         // Get URL
         let post = self.posts[(indexPath?.row)!]
-        
         // Configure YourCustomCell using the outlets that you've defined.
         let photos = post.value(forKeyPath: "photos") as? [NSDictionary]
         
@@ -123,7 +122,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let destinationViewController = segue.destination as! PhotosDetailViewController
         
-        destinationViewController.URL = imageUrlString!
+        destinationViewController.imageURL = imageUrl as! URL
 //        
 //        let cell = sender as! UITableViewCell
 //        let indexPath = tableView.indexPath(for: cell)
