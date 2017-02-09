@@ -81,6 +81,7 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let imageUrl = NSURL(string: imageUrlString!)
         cell.imgView.setImageWith(imageUrl as! URL)
+        cell.selectionStyle = .none
 //
         return cell
     }
