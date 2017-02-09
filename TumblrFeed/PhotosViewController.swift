@@ -102,14 +102,41 @@ class PhotoViewController: UIViewController, UITableViewDataSource, UITableViewD
     //        return cell
     //    }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+       
+        var indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+        // Get URL
+        let post = self.posts[(indexPath?.row)!]
+        
+        // Configure YourCustomCell using the outlets that you've defined.
+        let photos = post.value(forKeyPath: "photos") as? [NSDictionary]
+        
+        // photos is NOT nil, go ahead and access element 0 and run the code in the curly braces
+        let imageUrlString = photos?[0].value(forKeyPath: "original_size.url") as? String
+        
+        let imageUrl = NSURL(string: imageUrlString!)
+        
+        let destinationViewController = segue.destination as! PhotosDetailViewController
+        
+        destinationViewController.URL = imageUrlString!
+//        
+//        let cell = sender as! UITableViewCell
+//        let indexPath = tableView.indexPath(for: cell)
+//        let movie = movies![indexPath!.row]
+//        
+//        let detailViewController = segue.destination as! DetailViewController
+//        
+//        detailViewController.movie = movie
+        
+        
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+    
     
 }
